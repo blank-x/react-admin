@@ -1,6 +1,7 @@
 // import './App.css';
 import { Layout, Menu, Breadcrumb } from "antd";
-
+import {Link} from 'react-router-dom'
+import MyContent from './MyContent'
 const { Footer, Header, Content } = Layout;
 
 function App() {
@@ -11,12 +12,12 @@ function App() {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          defaultSelectedKeys={["1"]}
           style={{ lineHeight: "64px" }}
         >
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
+          <Menu.Item key="1"><Link to="/page1">nav 1</Link></Menu.Item>
+          <Menu.Item key="2"><Link to="/page2">nav 2</Link></Menu.Item>
+          <Menu.Item key="3"><Link to="/page3">nav 3</Link></Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "0 50px" }}>
@@ -27,7 +28,7 @@ function App() {
         </Breadcrumb>
         <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
           {" "}
-          {/* <MyContent></MyContent> */}
+           <MyContent></MyContent>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
