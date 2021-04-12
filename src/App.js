@@ -27,8 +27,7 @@ function App() {
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
-          {" "}
-           <MyContent></MyContent>
+            <MyContent ></MyContent>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>

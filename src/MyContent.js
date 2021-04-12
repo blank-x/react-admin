@@ -9,10 +9,11 @@ const { Footer, Header, Content } = Layout;
 
 
 class MyContent extends React.Component{
-  constructor() {
+  constructor(props) {
     super();
   }
   render() {
+
     return(
       <div>
 
@@ -29,3 +30,5 @@ class MyContent extends React.Component{
 }
 
 export default MyContent
+
+
