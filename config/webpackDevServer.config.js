@@ -32,8 +32,7 @@ module.exports = function (proxy, allowedHost) {
     // So we will disable the host check normally, but enable it if you have
     // specified the `proxy` setting. Finally, we let you override it if you
     // really know what you're doing with a special environment variable.
-    disableHostCheck:
-      !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
+    disableHostCheck: !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
     // Enable gzip compression of generated files.
     compress: true,
     // Silence WebpackDevServer's own logs since they're generally not useful.
@@ -88,7 +87,7 @@ module.exports = function (proxy, allowedHost) {
     // src/node_modules is not ignored to support absolute imports
     // https://github.com/facebook/create-react-app/issues/1065
     watchOptions: {
-      ignored: ignoredFiles(paths.appSrc),
+      // ignored: ignoredFiles(paths.appSrc),
     },
     https: getHttpsConfig(),
     host,
