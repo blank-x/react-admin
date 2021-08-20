@@ -40,7 +40,7 @@ function App() {
 }
 
 // 初始化useReducer中的state
-const initialState = {
+const initialGlobalState = {
   // 当我们每次添加新state时，用来储存更新前状态的数组
   past: [],
   // 当前的state值
@@ -86,7 +86,7 @@ const reducer = (state, action) => {
       const { initialPresent } = action;
 
       return {
-        ...initialState,
+        ...initialGlobalState,
         present: initialPresent,
       };
   }
@@ -94,7 +94,7 @@ const reducer = (state, action) => {
 // Hook
 const useHistory = (initialPresent) => {
   const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
+    ...initialGlobalState,
     present: initialPresent,
   });
 

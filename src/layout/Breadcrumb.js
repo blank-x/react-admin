@@ -1,13 +1,21 @@
 import { Breadcrumb } from 'antd';
+import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+const {Item} = Breadcrumb
+const MainBreadcrumb = function (props) {
 
-const MainBreadcrumb = function () {
   return (
-    <Breadcrumb style={{ margin: '16px 0' }}>
-      <Breadcrumb.Item>Home</Breadcrumb.Item>
-      <Breadcrumb.Item>List</Breadcrumb.Item>
-      <Breadcrumb.Item>App</Breadcrumb.Item>
-    </Breadcrumb>
+
+    <BreadcrumbWrapper  separator=">">
+      {props.list.map(({ name, link }) => (
+        <Item key={name}>{link ? <NavLink to={link}>{name}</NavLink> : name}</Item>
+      ))}
+    </BreadcrumbWrapper>
   );
 };
 
 export default MainBreadcrumb;
+
+const BreadcrumbWrapper = styled(Breadcrumb)`
+  margin: 10px;
+`
