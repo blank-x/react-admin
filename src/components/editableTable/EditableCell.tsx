@@ -13,14 +13,14 @@ interface ICellProps {
 }
 
 const EditableCell = (props: ICellProps) => {
-  const getInput = ({ initialValue }: {initialValue: any}) => {
+  const getInput = () => {
     const editConfig = props.editConfig;
     if (!editConfig) {
-      return (<Input defaultValue={initialValue} />);
+      return (<Input  />);
     }
     if (editConfig.type === 'select') {
       return (
-        <Select defaultValue={initialValue}>
+        <Select>
           { editConfig.options.map((item: any) => (
             <Select.Option key = { item.value } value = { item.value }>
               { item.text }
@@ -44,13 +44,12 @@ const EditableCell = (props: ICellProps) => {
       children,
       ...restProps
     } = props;
-
-    const rules = (editConfig && editConfig.rules) ? editConfig.rules : [];
+    const rules =  editConfig?.rules || [];
     return (
-      <td { ...restProps }>
+      <td { ...restProps } >
         { editing ? (
-          <Form.Item style = { { margin: 0 } } rules={rules}>
-            {getInput({initialValue: record[dataIndex]})}
+          <Form.Item style = { { margin: 0 } } rules={rules} name={dataIndex}  initialValue={record?.[dataIndex]}>
+            {getInput()}
           </Form.Item>
         ) : (
           children

@@ -42,7 +42,7 @@ export default ()=>{
   ];
   return (
     <Form form={form}>
-      <EditableTable form={form} columns={columns} data={originData} rowKey={'address'} />
+      <EditableTable form={form} columns={columns} data={originData}   />
   </Form>
   )
 }

@@ -6,7 +6,6 @@ interface ITableProps {
   form: any;
   columns: any;
   data: any;
-  rowKey: string;
 }
 
 export const EditableContext = React.createContext({});
@@ -43,20 +42,21 @@ const EditableTable = (props: ITableProps) => {
           <Button onClick = { handleCancelEdit }>Cancel</Button>
         </span>
       ) : (
-        <Button onClick = { () => handleEdit(index) }>Edit</Button>
+        <Button onClick = { () => handleEdit(record,index) }>Edit</Button>
       );
     },
   });
 
-  const handleEdit = (index: number) => {
+  const handleEdit = (record: any,index: number) => {
+    /* 先重置输入框的数据 */
+    props.form.setFieldsValue({ name: '', age: '', address: '', ...record });
+    /* 选中需要编辑的行 */
     setEditingKey(index);
   };
 
   const handleSaveEdit = (record: any, index: number) => {
     props.form.validateFields().then((values: any) => {
-      console.log(values);
       const newData = [...tableData];
-
       const item = newData[index];
       newData.splice(index, 1, {
         ...item,
@@ -86,7 +86,7 @@ const EditableTable = (props: ITableProps) => {
     });
 
     newData.push(blankRow);
-
+    /* 更新列表数据 */
     setTableData(newData);
     setEditingKey(newData.length - 1);
   };
@@ -107,7 +107,6 @@ const EditableTable = (props: ITableProps) => {
         columns = { columns }
         pagination = { false }
         scroll={{ x: 1000, y: 600 }}
-        rowKey = { props.rowKey }
       />
     </EditableContext.Provider>
   );
