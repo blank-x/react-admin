@@ -53,20 +53,20 @@ const EditableTable = (props: ITableProps) => {
   };
 
   const handleSaveEdit = (record: any, index: number) => {
-    props.form.validateFields((error: any, row: any) => {
-      if (error) {
-        return;
-      }
+    props.form.validateFields().then((values: any) => {
+      console.log(values);
       const newData = [...tableData];
 
       const item = newData[index];
       newData.splice(index, 1, {
         ...item,
-        ...row,
+        ...values,
       });
 
       setTableData(newData);
       setEditingKey(null);
+    }).catch(()=>{
+
     });
   };
 
@@ -106,6 +106,7 @@ const EditableTable = (props: ITableProps) => {
         dataSource = { tableData }
         columns = { columns }
         pagination = { false }
+        scroll={{ x: 1000, y: 600 }}
         rowKey = { props.rowKey }
       />
     </EditableContext.Provider>

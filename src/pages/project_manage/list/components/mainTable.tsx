@@ -40,7 +40,9 @@ export default ()=>{
     },
 
   ];
-  return (<>
-    <EditableTable form={form} columns={columns} data={originData} rowKey={'address'} />
-  </>)
+  return (
+    <Form form={form}>
+      <EditableTable form={form} columns={columns} data={originData} rowKey={'address'} />
+  </Form>
+  )
 }
